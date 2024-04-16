@@ -15,5 +15,9 @@ class LoginPage(BasePage): # наследуется от BasePage и расши�
         self.wait_for_selector_and_fill(self.USERNAME_SELECTOR, username)
         self.wait_for_selector_and_fill(self.PASSWORD_SELECTOR, password)
         self.wait_for_selector_and_click(self.LOGIN_BUTTON_SELECTOR)
+
+    def expect_login_success(self):
         self.assert_text_present_on_page('Products')
 
+    def expect_login_failed(self):
+        self.assert_text_present_on_page('Epic sadface: Username and password do not match any user in this service')

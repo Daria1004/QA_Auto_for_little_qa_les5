@@ -33,11 +33,17 @@ class BasePage:
     def assert_element_is_visible(self, selector): # проверки состояния элементов и их содержимого
         expect(self.page.locator(selector)).to_be_visible()
 
+    def assert_element_not_exist(self, selector):
+        expect(self.page.locator(selector)).not_to_be_visible()
+
     def assert_text_present_on_page(self, text):
         expect(self.page.locator("body")).to_contain_text(text)
 
     def assert_text_in_element(self, selector, text):
         expect(self.page.locator(selector)).to_have_text(text)
+
+    def assert_element_text_empty(self, selector):
+        expect(self.page.locator(selector)).to_be_empty()
 
     def assert_input_value(self, selector, expected_value):
         expect(self.page.locator(selector)).to_have_value(expected_value)
