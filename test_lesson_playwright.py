@@ -2,11 +2,10 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from pages.inventory_page import InventoryPage
 from pages.login_page import LoginPage
-from conftest import browser
 
 
-def test_add_items_and_checkout(browser):
-    page = browser.new_page()
+def test_add_items_and_checkout(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
     checkout_page = CheckoutPage(page)
@@ -19,8 +18,8 @@ def test_add_items_and_checkout(browser):
     checkout_page.fill_checkout_form("John", "Doe", '123321')
 
 
-def test_add_all_items(browser):
-    page = browser.new_page()
+def test_add_all_items(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
 
@@ -30,8 +29,8 @@ def test_add_all_items(browser):
     inventory_page.add_items_to_cart()
 
 
-def test_add_items_and_remove(browser):
-    page = browser.new_page()
+def test_add_items_and_remove(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
 
@@ -41,8 +40,8 @@ def test_add_items_and_remove(browser):
     inventory_page.remove_item_on_products_page()
 
 
-def test_check_items_in_cart(browser):
-    page = browser.new_page()
+def test_check_items_in_cart(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
     inventory_page = InventoryPage(page)
     cart_page = CartPage(page)
@@ -54,8 +53,8 @@ def test_check_items_in_cart(browser):
     cart_page.expect_items_in_cart()
 
 
-def test_clear_cart(browser):
-    page = browser.new_page()
+def test_clear_cart(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
 
     inventory_page = InventoryPage(page)
@@ -69,8 +68,8 @@ def test_clear_cart(browser):
     cart_page.expect_empty_cart()
 
 
-def test_incorrect_password(browser):
-    page = browser.new_page()
+def test_incorrect_password(browser_tab):
+    page = browser_tab
     login_page = LoginPage(page)
 
     login_page.login('standard_user', 'incorrect_password')

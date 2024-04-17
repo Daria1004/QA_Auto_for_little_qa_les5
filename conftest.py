@@ -9,3 +9,11 @@ def browser():
     yield browser
     browser.close()
     playwright.stop()
+
+
+@pytest.fixture(scope='function')
+def browser_tab(browser):
+    page = browser.new_page()
+    yield page
+    page.close()
+
